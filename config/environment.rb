@@ -8,9 +8,9 @@ Van_Gogh = Artist.new('Vincent', 40)
 Matisse = Artist.new('Henri', 40)
 Louvre = Gallery.new('The Loo', 'Paris')
 MFA = Gallery.new('Dirty South Gallery', 'Houston')
-painting_one = Painting.new('Mona Lisa', 1000000, Leo, Louvre)
-painting_two = Painting.new('The Last Supper', 900000, Leo, Louvre)
-painting_three = Painting.new('Starry Night', 700000, Van_Gogh, MFA)
-painting_four = Painting.new('Woman with a Hat', 650000, Matisse, MFA)
+painting_one = Leo.create_painting('Mona Lisa', 1000000, Louvre)
+painting_two = Leo.create_painting('The Last Supper', 900000, Louvre)
+painting_three = Van_Gogh.create_painting('Starry Night', 700000, MFA)
+painting_four = Matisse.create_painting('Woman with a Hat', 650000, MFA)
 
 binding.pry

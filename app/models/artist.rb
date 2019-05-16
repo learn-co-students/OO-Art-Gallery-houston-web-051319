@@ -1,6 +1,6 @@
 class Artist
 
-  attr_reader :name, :years_experience, :all
+  attr_reader :name, :years_experience
 
     @@all = []
 
@@ -10,6 +10,10 @@ class Artist
     @@all << self
   end
 
+  def self.all
+    @@all
+  end
+
   def paintings
     Painting.all.select do | painting |
       painting.artist == self
@@ -17,8 +21,8 @@ class Artist
   end
 
   def galleries
-    Gallery.all.select do | gallery |
-      gallery.artist == self
+    self.paintings.map do |painting|
+      painting.gallery
     end
   end
 
@@ -45,7 +49,7 @@ class Artist
   end
 
   def create_painting(title,price,gallery)
-    title = Painting.new(title,price,self,gallery)
+    Painting.new(title,price,self,gallery)
   end
 
 end
