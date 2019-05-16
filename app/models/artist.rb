@@ -59,7 +59,7 @@ class Artist
     Painting.new(title, price, self, gallery)
   end
 
-     hghghghghjghj
+     
 
 end
 

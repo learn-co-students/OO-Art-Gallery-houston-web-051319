@@ -44,4 +44,3 @@ class Gallery
     max_object
   end
 end
-hghghjghgjh
