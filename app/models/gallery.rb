@@ -18,20 +18,17 @@ class Gallery
     gallery_paintings= Painting.all.select do |paintings|
       paintings.gallery == self
     end
-    gallery_paintings= Painting.all.select do |paintings|
-      paintings.gallery == self
-    end
   end
   def artists
     gallery_paintings= Painting.all.select do |paintings|
       paintings.gallery == self
   end
-  gallery_artist=gallery_paintings.map do |painting|
-    painting.artist.name
-
+    gallery_artist=gallery_paintings.map do |painting|
+      painting.artist.name
   end
   gallery_artist.uniq
 end
+
 def most_expensive_painting
   gallery_paintings= Painting.all.select do |paintings|
     paintings.gallery == self

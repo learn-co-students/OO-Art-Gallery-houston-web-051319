@@ -16,6 +16,11 @@ class Painting
     @@all
   end
 
+  def title
+      @title
+  end
+
+
   def self.total_price
     Painting.all.sum(&:price)
   end

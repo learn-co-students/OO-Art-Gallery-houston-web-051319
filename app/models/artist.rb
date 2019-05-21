@@ -16,12 +16,13 @@ class Artist
     @@all
   end
 
+  def years_experience
+    @years_experience
+  end
+  
   def paintings
-      artist_paintings= Painting.all.select do |paintings|
+      Painting.all.select do |paintings|
         paintings.artist == self
-      end
-      artist_paintings.map do |painting|
-        painting
       end
     end
       
@@ -29,9 +30,10 @@ class Artist
       artist_paintings= Painting.all.select do |paintings|
         paintings.artist == self
       end
-      artist_paintings.map do |painting|
+      unique_galleries = artist_paintings.map do |painting|
         painting.gallery.name
       end
+      unique_galleries.uniq
     end
 
     def cities
@@ -49,17 +51,25 @@ class Artist
     end
 
     def count_paintings
-      artist_paintings= Painting.all.select do |paintings|
+       number_of_paintings = Painting.all.select do |paintings|
         paintings.artist == self
       end
-        number_of_paintings = artist_paintings.map do |painting|
-          painting.title
-        end
-        number_of_paintings.length 
-      end
+        number_of_paintings.length
+    end
 
-    def most_prolific
-        
+    def self.most_prolific
+        most_prolific_artist = 0
+           Artist.all.each do |artist|
+            x = artist.paintings.length / artist.years_experience
+            if x > most_prolific_artist
+            most_prolific_artist = x 
+          else
+            most_prolific_artist
+          end
+        end
+        Artist.all.select do |artist|
+          artist.paintings.length / artist.years_experience == most_prolific_artist
+        end
     end
 
     def create_painting(title, price, gallery)
