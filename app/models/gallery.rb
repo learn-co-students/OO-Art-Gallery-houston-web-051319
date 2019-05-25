@@ -1,3 +1,4 @@
+#require 'pry'
 class Gallery
 
   attr_reader :name, :city
@@ -11,7 +12,7 @@ class Gallery
   end
  
   def self.all
-   @@all
+   @@all 
   end
  
   def painting
@@ -44,3 +45,5 @@ class Gallery
     max_object
   end
  end
+ #binding.pry
+ #0
